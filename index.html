@@ -1,73 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rahul's Personal Site</title>                                        
-    </head>
-    <body>
-        <img src="https://media.licdn.com/dms/image/C5103AQEIJTJRliUHMg/profile-displayphoto-shrink_800_800/0/1586415635937?e=2147483647&v=beta&t=kKFHGDOiacPIjb0svT-4af3wd_f9Z4-0sOlaX2zqtZ8" alt="Rahul profile photo" width="400" height="400">
-        <h1>Rahul Prabhu</h1>
-        <p><em>Employee of <strong><a href="https://www.nttdata.com/global/en/">NTT DATA </a>.</strong></em></p>
-        <p>I work for NTT DATA where my job role is Data Analyst . 
-            In this role I have to learn Data Science and many other AI and ML Libraries 
-            as well as Software tools supporting these field of interest.
-        </p>
-        <hr>
-        <h2>Coding in python and pandas.</h2>
-        <p><b>Education: </b></p>
-        <ul>
-            <li>School: St. Thomas Academy</li>
-            <li>Junior College: Mithibai College</li>
-            <li>Degree College: VIT, Vadala</li>
-        </ul>
-        <hr>
-        <h3>Work Experience</h3>
-        <table cellspacing="10">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Work</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2021-10-10</td>
-                    <td>Joined NTT DATA Organization.</td>
-                </tr>
-                <tr>
-                    <td>2021-12-15</td>
-                    <td>Got onboarded to Daimler Project.</td>
-                </tr>
-            </tbody>
-        </table>
-        <hr>
-        <h4>Skills</h4>
-        <table cellspacing="10">
-            <tr>
-                <td>ios Development</td>
-                <td>⭐⭐⭐</td>
-            </tr>
-            <tr>
-                <td>Data Analyst</td>
-                <td>⭐⭐⭐⭐⭐</td>
-            </tr>
-        </table>
-        <table cellspacing="10">
-            <thead>
-                <tr>
-                    <td>Electronics</td>
-                    <td>⭐⭐⭐⭐</td>
-                </tr>
-                <tr>
-                    <td>Computer Science</td>
-                    <td>⭐⭐⭐⭐</td>
-                </tr>
-            </thead>
-        </table>
-        <hr>
-        <a href="contact-me.html">contact-me</a>
-        <a href="hobbies.html">My hobbies</a>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Prabhu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .active-link {
+            color: #6b7280; /* Tailwind gray-500 */
+            font-weight: 500;
+        }
+        .skill-bar {
+            background-color: #f3f4f6; /* gray-100 */
+            height: 10px;
+            border-radius: 0.5rem;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        .skill-bar-progress {
+            background-color: #6b7280; /* gray-500 */
+            height: 10px;
+            border-radius: 0.5rem;
+            width: 0;
+            transition: width 0.5s ease-in-out;
+            position: relative; /* Added for the pseudo-element */
+        }
+        .skill-bar-progress::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -8px; /* Adjusted to position it at the end */
+            width: 6px; /* Size of the dot */
+            height: 6px;
+            border-radius: 50%;
+            background-color: #374151; /* A slightly darker shade */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQFNP-7L9sfCHg/profile-displayphoto-shrink_400_400/B4DZQRc4UxHwAg-/0/1735459571706?e=1747872000&v=beta&t=WrXP4hpef88GvE3d6mJVMVcTuy4I-Er8rXfUmsv8fkQ" alt="Your Profile Picture" class="rounded-full mr-4">
+                <h1 class="text-xl font-semibold text-gray-800">Rahul Prabhu</h1>
+            </div>
+            <nav class="hidden md:block">
+                <a href="#about" class="text-gray-600 hover:text-gray-800 mx-4 transition-colors duration-300">About</a>
+                <a href="#experience" class="text-gray-600 hover:text-gray-800 mx-4 transition-colors duration-300">Experience</a>
+                <a href="#projects" class="text-gray-600 hover:text-gray-800 mx-4 transition-colors duration-300">Projects</a>
+                <a href="#skills" class="text-gray-600 hover:text-gray-800 mx-4 transition-colors duration-300">Skills</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-800 mx-4 transition-colors duration-300">Contact</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="hamburger-btn" class="text-gray-600 focus:outline-none" aria-label="Toggle Navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+
+                </button>
+                <div id="mobile-menu" class="hidden absolute top-16 right-0 bg-white shadow-lg rounded-md py-2 px-4 space-y-2">
+                    <a href="#about" class="block text-gray-600 hover:text-gray-800 transition-colors duration-300">About</a>
+                    <a href="#experience" class="block text-gray-600 hover:text-gray-800 transition-colors duration-300">Experience</a>
+                    <a href="#projects" class="block text-gray-600 hover:text-gray-800 transition-colors duration-300">Projects</a>
+                    <a href="#skills" class="block text-gray-600 hover:text-gray-800 transition-colors duration-300">Skills</a>
+                    <a href="#contact" class="block text-gray-600 hover:text-gray-800 transition-colors duration-300">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="about" class="section py-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">About Me</h2>
+            <p class="text-gray-700 leading-relaxed">
+                I am a passionate and driven professional with a strong background in Data Science.  I thrive in challenging environments where I can leverage my skills in Data Analytics, Data Visualization, and Machine Learning to achieve meaningful results.  My goal is to contribute to a team where I can continue to learn, grow, and make a significant impact.
+            </p>
+            <p class="text-gray-700 leading-relaxed mt-4">
+                I am a quick learner and passionate individual, with a proven ability to solve problems. I am eager to connect with like-minded professionals and explore opportunities to collaborate on exciting projects.
+            </p>
+        </section>
+
+        <section id="experience" class="section py-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Experience</h2>
+            <div class="job-experience mb-8">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFF9MxtticVc8TEtbrWF2IoZ9r4IsICyO0AQ&s" alt="Your Image" style="height: 100px; display: inline-block; vertical-align: middle; padding:20px"><h3 class="text-xl font-semibold text-gray-800 mb-2" style="display: inline-block; vertical-align: middle;">NTT Data Services</h3>
+                <p class="text-gray-600 mb-1">27/8/2021 - 12/8/2024</p>
+                <ul class="list-disc list-inside text-gray-700 leading-relaxed">
+                    <li>Digital Technology Analyst</li>
+                    <li>IT Associate</li>
+                    <li>Graduate Trainee</li>
+                </ul>
+                <br>
+                <p id="projects">
+                    <div class="project-item mb-8">
+                        <p class="text-gray-600 mb-1">Client: Mercedes-Benz</p>
+                        <p class="text-gray-600 mb-1">Technology Used: Python, Apache Spark, Apache Nifi, Azure Databricks, Azure Blob Storage, Azure Data Factory, Azure Data Lake, Delta Live Table, Plotly, Pandas, asammdf, Matlab(Basics)</p>
+                        <p class="text-gray-700 leading-relaxed">
+                            I got a privilege to work for Mercedes-Benz client which is one of the top companies in automobile sector.<br>
+                            These were the task and responsibilities which I undertook during my tenure working for the client:<br>
+                            1.) Created Plotly Durability reports on Engine emissions of Car in replacement to legacy reports created from a software created with help of Javascript thereby creating flexibility and automating the report generation through NIFI and scheduling regular jobs as well as reducing compute time through optimizations.<br>
+                            2.) Created a streaming application for ingesting incremental data from source folder in shared path with the help of Azure Data Factory copy job and Apache Spark hosted in Azure Databricks with scheduling a job for ingesting the incremental data on daily basis by virtue of Databricks job.<br>
+                            3.) Created ETL pipeline with help of Delta Live table pipeline for ingesting data worth of 3GB on a daily basis creating silver layer source table for aggregation jobs to create aggregated table for Tableau Dashboards.<br>
+                            4.) Created Quality check dashboard for monitoring Data Ingestion job hosted on Databricks.<br>
+                            5.) Worked on a usecase for connecting data in Azure Databricks to Matlab through mlspark API thereby creating a platform for Matlab simulink tool to run simulation on real time data that comes from Databricks.<br>
+                            6.) Worked on creating aggregation tables for Tableau Dashboard.<br>
+                            7.) Worked on migrating certain on-premises application to Azure Cloud Infrastructure.<br>
+                        </p>
+                    </div>
+                </p>
+            </div>
+            <div class="job-experience mb-8">
+                <img src="https://logos-world.net/wp-content/uploads/2020/06/Accenture-Emblem.png" alt="Your Image" style="height: 50px; display: inline-block; vertical-align: middle; padding:10px"><h3 class="text-xl font-semibold text-gray-800 mb-2" style="display: inline-block; vertical-align: middle;">Accenture</h3>
+                <p class="text-gray-600 mb-1">21/8/2024 - Present</p>
+                <ul class="list-disc list-inside text-gray-700 leading-relaxed">
+                    <li>Data Engineering Senior Analyst</li>
+                </ul>
+                <p id="projects">
+                    <div class="project-item mb-8">
+                        <p class="text-gray-600 mb-1">Technology Used: Hadoop, Spark, Scala, Docker, BMC Control-M</p>
+                    </div>
+                </p>
+            </div>
+        </section>
+
+
+        <section id="skills" class="section py-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Python</span>
+                        <span class="text-gray-600">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-progress" data-skill="80"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Hadoop</span>
+                        <span class="text-gray-600">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                         <div class="skill-bar-progress" data-skill="75"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Apache Spark</span>
+                        <span class="text-gray-600">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                         <div class="skill-bar-progress" data-skill="75"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Scala</span>
+                        <span class="text-gray-600">65%</span>
+                    </div>
+                    <div class="skill-bar">
+                         <div class="skill-bar-progress" data-skill="65"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Java</span>
+                        <span class="text-gray-600">60%</span>
+                    </div>
+                    <div class="skill-bar">
+                         <div class="skill-bar-progress" data-skill="60"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Apache Nifi</span>
+                        <span class="text-gray-600">65%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-progress" data-skill="65"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Azure Databricks</span>
+                        <span class="text-gray-600">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-progress" data-skill="85"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Azure Blob Storage</span>
+                        <span class="text-gray-600">70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-progress" data-skill="70"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Azure Data Factory</span>
+                        <span class="text-gray-600">60%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-progress" data-skill="60"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">BMC Control-M jobs</span>
+                        <span class="text-gray-600">60%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-progress" data-skill="60"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-700 font-medium">Hive</span>
+                        <span class="text-gray-600">70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-progress" data-skill="70"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section py-16">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Contact</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                I'm always open to new opportunities and collaborations. Feel free to reach out to me through any of the following channels:
+            </p>
+            <ul class="list-none space-y-2">
+                <li class="text-gray-600">Email: <a href="mailto:rahulprabhu14@gmail.com" class="text-blue-500 hover:text-blue-700 transition-colors duration-300">rahulprabhu14@gmail.com</a></li>
+                <li class="text-gray-600">LinkedIn: <a href="https://www.linkedin.com/in/rahul-prabhu-09b826160/" target="_blank" class="text-blue-500 hover:text-blue-700 transition-colors duration-300">LinkedIn URL</a></li>
+                <li class="text-gray-600">GitHub: <a href="https://github.com/Rahul-Prabhu" target="_blank" class="text-blue-500 hover:text-blue-700 transition-colors duration-300">Github Profile</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 text-gray-600 py-4 text-center">
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                 // Remove active class from all links
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active-link');
+                });
+                // Add active class to the clicked link
+                this.classList.add('active-link');
+
+                 if (document.getElementById('mobile-menu').classList.contains('block')) {
+                    document.getElementById('mobile-menu').classList.remove('block');
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                 }
+            });
+        });
+
+       //mobile menu
+       document.getElementById('hamburger-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('block');
+       });
+
+        // Skills animation on scroll (using Intersection Observer)
+        const skillsSection = document.getElementById('skills');
+        const skillBars = document.querySelectorAll('.skill-bar-progress');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    skillBars.forEach(skillBar => {
+                        const skillValue = skillBar.dataset.skill;
+                        skillBar.style.width = `${skillValue}%`;
+                    });
+                    observer.disconnect(); // Stop observing after animation
+                }
+            });
+        });
+
+        observer.observe(skillsSection);
+
+        // Add active class to the first link on page load
+        document.querySelector('nav a:first-child').classList.add('active-link');
+    </script>
+</body>
 </html>
