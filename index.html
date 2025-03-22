@@ -250,7 +250,7 @@
     </main>
 
     <footer class="bg-gray-200 text-gray-600 py-4 text-center">
-        <p>&copy; 2024 Rahul Prabhu. All rights reserved.</p>
+        <p>&copy; <span id="currentYear"></span> Rahul Prabhu. All rights reserved.</p>
     </footer>
 
     <script>
@@ -304,6 +304,12 @@
 
         // Add active class to the first link on page load
         document.querySelector('nav a:first-child').classList.add('active-link');
+
+        // Get the current year
+        const currentYear = new Date().getFullYear();
+
+        // Insert the year into the HTML
+        document.getElementById('currentYear').textContent = currentYear;
     </script>
 </body>
 </html>
